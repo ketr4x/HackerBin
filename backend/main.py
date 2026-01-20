@@ -1,13 +1,13 @@
 from fastapi import FastAPI
+from sqlmodel import Session, select
+from database import create_db, get_session
 
 app = FastAPI()
+create_db()
 
 
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
+@app.post("/test")
+async def test():
+    return {"message": "Server is up"}
 
 
-@app.get("/hello/{name}")
-async def say_hello(name: str):
-    return {"message": f"Hello {name}"}
