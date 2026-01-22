@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
 from sqlmodel import Session, select
 from database import create_db, get_session
 
@@ -11,3 +11,5 @@ async def test():
     return {"message": "Server is up"}
 
 
+@app.post("/api/user/create")
+async def create_user(session: Session = Depends(get_session)):

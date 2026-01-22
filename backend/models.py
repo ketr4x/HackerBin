@@ -5,7 +5,7 @@ class User(SQLModel, table=True):
     id: int | None = Field(default=None, primary_key=True)
     username: str
     auth: str
-    created_at: datetime | None = Field(default_factory=datetime.now)
+    created_at: datetime = Field(default_factory=datetime.now)
     banned: bool = False
 
 class Item(SQLModel, table=True):
